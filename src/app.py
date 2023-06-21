@@ -119,3 +119,18 @@ if __name__ == "__main__":
     my_aquarium_app.start()
     my_aquarium_app._die_fish(1)
 
+"""By convention, attributes that start with a single underscore _ are considered "protected,"
+ indicating that they should not be accessed or modified from outside the class, although
+ they are still accessible. Attributes that start with a double underscore __ are "mangled,"
+ which means their names are modified to incorporate the class name, making them harder to access from outside the class.
+
+However, it's important to note that these naming conventions are just conventions
+and not strict access control mechanisms. Python programmers are expected to follow
+these conventions and respect the intended visibility of attributes, but it is still
+possible to access or modify them if necessary.
+
+If you have a specific requirement for strict access control, such as private
+or protected attributes that cannot be accessed from outside the class, there are
+some techniques you can use, such as property decorators, naming conventions, 
+or using the __slots__ attribute. However, these techniques involve more advanced
+concepts and may not align with the typical Pythonic approach."""
