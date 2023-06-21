@@ -60,82 +60,20 @@ if __name__ == "__main__":
     MyAquariumApp._aquarium_app__die_fish(1)"""
 
 # Solution Modified code
-class AquariumApp:
-    def __init__(self, fish_count, eye_color, skin_color):
-        self.skin_color = skin_color
-        self.private_swim_count = 0
-        self.eye_color = eye_color
-        self.protected_dead_fish = 0
-        self.fish_count = fish_count
-
-    def start(self):
-        if self.fish_count == 0:
-            print("There are no alive fish left.")
-            return
-        self.private_swim_count += 1
-
-        print(
-            str(self.fish_count)
-            + " fish are swimming. Their eyes are "
-            + self.eye_color
-            + " and their skin is "
-            + self.skin_color
-            + "."
-        )
-        print(
-            "There are "
-            + str(self.protected_dead_fish)
-            + " dead fish with them in the aquarium."
-        )
-        print(
-            "The fish have now been swimming "
-            + str(self.private_swim_count)
-            + " times."
-        )
-
-    def die_fish(self, number):
-        if self.fish_count == 0:
-            print("All fish are dead.")
-            print("GAME OVER")
-            print("=====")
-            return
-        self.fish_count -= number
-        self.protected_dead_fish += number
-        if number > 1:
-            print(str(number) + " fish have died.")
-        else:
-            print("A fish has died.")
-
-
-if __name__ == "__main__":
-    my_aquarium_app = AquariumApp(5, "blue", "red")
-    my_aquarium_app.start()
-    my_aquarium_app.die_fish(2)
-    my_aquarium_app.start()
-    my_aquarium_app.die_fish(1)
-    my_aquarium_app.start()
-    my_aquarium_app.die_fish(2)
-    my_aquarium_app.start()
-    my_aquarium_app.die_fish(1)
-print("_______________________________________")
-
 # Solution with the comments
 class AquariumApp:
     def __init__(self, fish_count, eye_color, skin_color):
-        self.skin_color = skin_color
-        self.private_swim_count = 0
-        self.eye_color = eye_color
-        self.protected_dead_fish = 0
-        self.fish_count = fish_count
+        self.skin_color = skin_color  # 'protected' attribute
+        self.__swim_count = 0  # 'private' attribute
+        self.eye_color = eye_color  # public attribute
+        self._dead_fish = 0  # 'protected' attribute
+        self.fish_count = fish_count  # public attribute
 
     def start(self):
-        """
-        Starts the aquarium simulation by printing the current status of the fish.
-        """
         if self.fish_count == 0:
             print("There are no alive fish left.")
             return
-        self.private_swim_count += 1
+        self.__swim_count += 1
 
         print(
             str(self.fish_count)
@@ -147,27 +85,23 @@ class AquariumApp:
         )
         print(
             "There are "
-            + str(self.protected_dead_fish)
+            + str(self._dead_fish)
             + " dead fish with them in the aquarium."
         )
         print(
             "The fish have now been swimming "
-            + str(self.private_swim_count)
+            + str(self.__swim_count)
             + " times."
         )
 
-    def die_fish(self, number):
-        """
-        Simulates the death of fish by reducing the fish count and increasing the dead fish count.
-        Prints the appropriate message based on the number of fish that died.
-        """
+    def _die_fish(self, number):
         if self.fish_count == 0:
             print("All fish are dead.")
             print("GAME OVER")
             print("=====")
             return
         self.fish_count -= number
-        self.protected_dead_fish += number
+        self._dead_fish += number
         if number > 1:
             print(str(number) + " fish have died.")
         else:
@@ -175,53 +109,13 @@ class AquariumApp:
 
 
 if __name__ == "__main__":
-    # Create an instance of the AquariumApp class
     my_aquarium_app = AquariumApp(5, "blue", "red")
-    
-    # Start the simulation
     my_aquarium_app.start()
-    
-    # Simulate the death of 2 fish
-    my_aquarium_app.die_fish(2)
-    
-    # Start the simulation again
+    my_aquarium_app._die_fish(2)
     my_aquarium_app.start()
-    
-    # Simulate the death of 1 fish
-    my_aquarium_app.die_fish(1)
-    
-    # Start the simulation again
+    my_aquarium_app._die_fish(1)
     my_aquarium_app.start()
-    
-    # Simulate the death of 2 fish
-    my_aquarium_app.die_fish(2)
-    
-    # Start the simulation again
+    my_aquarium_app._die_fish(2)
     my_aquarium_app.start()
-    
-    # Simulate the death of 1 fish
-    my_aquarium_app.die_fish(1)
+    my_aquarium_app._die_fish(1)
 
-##########
-"""
-Here's a brief summary of what I added to the original code:
-Added comments to provide explanations and context for each
-method and section of the code.
-Modified the class name from aquarium_app to AquariumApp to follow
-the recommended Python class naming convention (PascalCase).
-Modified the parameter names in the constructor (__init__ method)
- and other methods to use lowercase with underscores (snake_case)
-to follow the recommended Python naming convention.
-Renamed the instance variable PRIVATE_SWIM_COUNT to private_swim_count
-to follow the recommended Python naming convention.
-Renamed the instance variable protected_DEAD_FISH to protected_dead_fish
-to follow the recommended Python naming convention.
-Renamed the private method __die_fish to die_fish to follow
-the recommended Python naming convention.
-Renamed the instance variable MyAquariumApp to my_aquarium_app
-to follow the recommended Python naming convention.
-
-Overall, these changes improve the readability and
-adherence to Python naming conventions in the code.
-
-"""
