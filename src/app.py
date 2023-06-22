@@ -63,7 +63,7 @@ if __name__ == "__main__":
 # Solution with the comments
 class AquariumApp:
     def __init__(self, fish_count, eye_color, skin_color):
-        self.skin_color = skin_color  # 'protected' attribute
+        self.skin_color = skin_color  
         self.__swim_count = 0  # 'private' attribute
         self.eye_color = eye_color  # public attribute
         self._dead_fish = 0  # 'protected' attribute
@@ -94,7 +94,7 @@ class AquariumApp:
             + " times."
         )
 
-    def _die_fish(self, number):
+    def die_fish(self, number):
         if self.fish_count == 0:
             print("All fish are dead.")
             print("GAME OVER")
@@ -111,13 +111,13 @@ class AquariumApp:
 if __name__ == "__main__":
     my_aquarium_app = AquariumApp(5, "blue", "red")
     my_aquarium_app.start()
-    my_aquarium_app._die_fish(2)
+    my_aquarium_app.die_fish(2)
     my_aquarium_app.start()
-    my_aquarium_app._die_fish(1)
+    my_aquarium_app.die_fish(1)
     my_aquarium_app.start()
-    my_aquarium_app._die_fish(2)
+    my_aquarium_app.die_fish(2)
     my_aquarium_app.start()
-    my_aquarium_app._die_fish(1)
+    my_aquarium_app.die_fish(1)
 
 """By convention, attributes that start with a single underscore _ are considered "protected,"
  indicating that they should not be accessed or modified from outside the class, although
